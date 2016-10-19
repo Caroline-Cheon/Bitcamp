@@ -17,7 +17,7 @@ public class Exam42_2 {
           0, 1, 1, 0, 0, 0, 1, 1, 0, 0
           };
 
-      int v1 = languages[0] +languages[4] +languages[5];
+      int v1 = languages[0] + languages[4] + languages[5];
       String result = (v1 == 3) ? "YES":"NO";
       System.out.println(result);
 
