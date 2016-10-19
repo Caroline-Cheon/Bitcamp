@@ -1,4 +1,4 @@
-//주제: 명령어 흐름을 제어하는 문법 - 중첩 반복문 탈출 2
+package step05;
 
 public class Exam071 {
   public static void main(String[] args) {
@@ -16,8 +16,3 @@ public class Exam071 {
 
   }
 }
-
-/*
-# break 라벨명
-- 라벨이 붙은 명령 블록을 탈출한다.
-*/

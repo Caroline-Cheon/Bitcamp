@@ -1,4 +1,4 @@
-//주제: 명령어 흐름을 제어하는 문법 - 반복문 while과 break, continue
+package step05;
 
 public class Exam073 {
   public static void main(String[] args) {
@@ -6,15 +6,10 @@ public class Exam073 {
     while (i < 10) {
       i++;
       if (i == 3)
-        continue; // while문인 경우, 조건 검사로 이동한다.
+        continue;
       if (i == 7)
-        break; // 자신이 속한 반복문을 탈출한다.
+        break; 
       System.out.println(i);
     }
   }
 }
-
-/*
-# break
-- break가 소속된 반복문을 탈출한다.
-*/
