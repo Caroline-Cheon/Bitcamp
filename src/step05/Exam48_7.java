@@ -6,7 +6,7 @@ public class Exam48_7 {
     int count = 5;
     int starCount = 0;
     while(count > 0) {
-      while(starCount++  count) {
+      while(starCount++ < count) {
         System.out.print("*");
       }
       System.out.println();

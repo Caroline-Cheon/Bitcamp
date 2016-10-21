@@ -14,7 +14,7 @@ public class Test04 {
     int maxNum = number,
         minNum = number;
 
-    for(int i = 1; i < args.length; i++){
+    for(int i = 1; i < args.length; i++) {
       number = Integer.parseInt(args[i]);
       if (number > maxNum)
         maxNum = number;

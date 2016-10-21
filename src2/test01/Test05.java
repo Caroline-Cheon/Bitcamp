@@ -10,18 +10,18 @@ package test01;
 
 public class Test05 {
   public static void main(String[] args){
-    int number = Integer.parseInt(args[0]);    //ex.45328
-    int maxNum = number % 10,  //8
+    int fullNumber = Integer.parseInt(args[0]);    //ex.45328
+    int maxNum = fullNumber % 10,  //8
         minNum = maxNum;       //8
-    number /= 10;  //4532
-    int remainder = 0;
-    while (number > 0) {
-      remainder = number % 10;
-      if (remainder > maxNum)
-        maxNum = remainder;
-      if (remainder < minNum)
-        minNum = remainder;
-      number /= 10;
+    fullNumber /= 10;  //4532
+    int digit = 0;
+    while (fullNumber > 0) {
+      digit = fullNumber % 10;
+      if (digit > maxNum)
+        maxNum = digit;
+      if (digit < minNum)
+        minNum = digit;
+      fullNumber /= 10;
     }
     System.out.printf("최대 값: %d\n", maxNum);
     System.out.printf("최소 값: %d\n", minNum);
