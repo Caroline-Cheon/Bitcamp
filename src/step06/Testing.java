@@ -1,4 +1,4 @@
-// 주제: 명령어 묶기 - 메서드 활용 예 (메서드 사용 후) II
+// 주제: 명령어 묶기 - 메서드 활용 예 (메서드 사용 후) III
 
 package step06;
 
@@ -19,15 +19,18 @@ public class Testing {
     if (starLength > lineSize) {
       starLength = lineSize;
     }
-    int blankLength = (lineSize - starLength) / 2;
+    printBlanks(getBlankSize(lineSize, starLength));
+    printStarsLine(starLength);
+  }
 
-    for (int i = 0; i < blankLength; i++) {
+  static int getBlankSize(int lineSize, int starLength) {
+    return (lineSize - starLength) / 2;
+  }
+
+  static void printBlanks(int length) {
+    for (int i = 0; i < length; i++) {
       System.out.print(" ");
     }
-    for (int i = 0; i < starLength; i++) {
-      System.out.print("*");
-    }
-    System.out.println();
   }
 
   public static void main(String[] args) {
