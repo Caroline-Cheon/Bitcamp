@@ -1,46 +1,56 @@
-// 주제: 명령어 묶기 - 메서드 활용 예 (메서드 사용 후) III
-
 package step06;
 
 public class Testing {
-  // 1) 메서드 정의 : 명령어들을 분리하여 놓고 이름을 부여한 것.
-  static void printStarsLine(int length) {
-    int count = 0;
-    while (count++ < length) {
-      System.out.print("*");
+  public static void main(String[] args) {
+    int[] arr = new int[20];
+
+    initByIndexValue(arr);
+    mix(arr);
+    printAll(arr, -1);
+
+    mix(arr); // 언제든 필요할 때 마다 mix()에 선언된 명령을 재 실행할 수 있다.
+    printAll(arr, -1); // 이것이 메서드를 만드는 이유다!
+  }
+
+  static void mix(int[] arr) {
+    int index1, index2, temp;
+    for (int i = 0; i < arr.length; i++) {
+      index1 = (int)(Math.random() * arr.length);
+      index2 = (int)(Math.random() * arr.length);
+      temp = arr[index1];
+      arr[index1] = arr[index2];
+      arr[index2] = temp;
+    }
+  }
+
+  static void printAll(int[] arr, int keyIndex) {
+    for (int i = 0; i < arr.length; i++) {
+      if (keyIndex >= 0 && i == keyIndex) {
+        System.out.printf("[%d] ", arr[i]);
+      } else {
+        System.out.printf("%d ", arr[i]);
+      }
     }
     System.out.println();
   }
 
-  static void printCenterStarsLine(int lineSize, int starLength) {
-    if (lineSize % 2 == 0) {
-      lineSize += 1;
-    }
-    if (starLength > lineSize) {
-      starLength = lineSize;
-    }
-    printBlanks(getBlankSize(lineSize, starLength));
-    printStarsLine(starLength);
-  }
-
-  static int getBlankSize(int lineSize, int starLength) {
-    return (lineSize - starLength) / 2;
-  }
-
-  static void printBlanks(int length) {
-    for (int i = 0; i < length; i++) {
-      System.out.print(" ");
+  static void initByIndexValue(int[] arr) {
+    for (int i = 0; i < arr.length; i++) {
+      arr[i] = i;
     }
   }
 
-  public static void main(String[] args) {
-    int count = 6;
-    while (--count > 0) {
-      printStarsLine(count);
-    }
-    System.out.println("-------------------------");
-    for (int i = 1; i <= 9; i += 2) {
-      printCenterStarsLine(9, i);
+  static void sort(int[] arr) {
+    int temp;
+    for (int x = 1; x < arr.length; x++) {
+      for (int i = 0; i < arr.length - x; i++) {
+        if (arr[i] > arr[i+1]) {
+          temp = arr[i];
+          arr[i] = arr[i+1];
+          arr[i+1] = temp;
+        }
+      }
     }
   }
+
 }
