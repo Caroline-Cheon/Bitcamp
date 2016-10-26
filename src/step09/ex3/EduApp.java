@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class EduApp {
   public static void main(String[] args) {
     System.out.println("Welcome to Bitcamp Management System");
-
     TextBook[] textbooks = new TextBook[100];
     int length = 0;
     Scanner keyScan = new Scanner(System.in);
@@ -13,6 +12,7 @@ public class EduApp {
       System.out.println("Order among 'add','list','view'");
       System.out.print("Order> ");
       String input = keyScan.nextLine();
+
       if(input.equals("add")) {addTextBookList(textbooks, length++);}
       else if(input.equals("list")) {printTextBookList(textbooks, length);}
       else if(input.equals("view")) {viewTextBookList(textbooks, length);}
@@ -26,34 +26,34 @@ public class EduApp {
 
   static void addTextBookList(TextBook[] textbooks, int length) {
     Scanner keyScan = new Scanner(System.in);
+    TextBook textbook = new TextBook();
 
-      TextBook textbook = new TextBook();
-      System.out.print("title(ex: java's best practice)? ");
-      textbook.title = keyScan.nextLine();
+    System.out.print("title(ex: java's best practice)? ");
+    textbook.title = keyScan.nextLine();
 
-      System.out.print("author(ex: mr.Nam)? ");
-      textbook.author = keyScan.nextLine();
+    System.out.print("author(ex: mr.Nam)? ");
+    textbook.author = keyScan.nextLine();
 
-      System.out.print("press(ex: Dow)? ");
-      textbook.press = keyScan.nextLine();
+    System.out.print("press(ex: Dow)? ");
+    textbook.press = keyScan.nextLine();
 
-      System.out.print("releaseDate(ex: 2016)? ");
-      textbook.releaseDate = keyScan.nextLine();
+    System.out.print("releaseDate(ex: 2016)? ");
+    textbook.releaseDate = keyScan.nextLine();
 
-      System.out.print("language(ex: Korean)? ");
-      textbook.language = keyScan.nextLine();
+    System.out.print("language(ex: Korean)? ");
+    textbook.language = keyScan.nextLine();
 
-      System.out.print("description(ex: Do you want to feel java from basic to OOP? ");
-      textbook.description = keyScan.nextLine();
+    System.out.print("description(ex: Do you want to feel java from basic to OOP? ");
+    textbook.description = keyScan.nextLine();
 
-      System.out.print("page(ex: 520)? ");
-      textbook.page = Integer.parseInt(keyScan.nextLine());
+    System.out.print("page(ex: 520)? ");
+    textbook.page = Integer.parseInt(keyScan.nextLine());
 
-      System.out.print("price(ex: 30000)? ");
-      textbook.price = Integer.parseInt(keyScan.nextLine());
+    System.out.print("price(ex: 30000)? ");
+    textbook.price = Integer.parseInt(keyScan.nextLine());
 
-      textbooks[length] = textbook;
-
+    textbooks[length] = textbook;
+    System.out.println();
   }
 
 
@@ -71,6 +71,7 @@ public class EduApp {
         textbook.description,
         textbook.page,
         textbook.price);
+      System.out.println();
     }
   }
   static void viewTextBookList(TextBook[] textbooks, int length) {
@@ -80,6 +81,7 @@ public class EduApp {
     for(int i = 0; i <length;  i++) {
       TextBook textbook = textbooks[i];
       if(input.equals(textbook.title)) {
+        
         System.out.println("-----------------------------------");
         System.out.printf("text: %s\n",textbook.title);
         System.out.printf("author: %s\n",textbook.author);
