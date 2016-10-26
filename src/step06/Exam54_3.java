@@ -29,7 +29,7 @@ public class Exam54_3 {
 
   public static void main(String[] args) {
     score(new int[]{100, 90, 80}, "Karry");
-    //score2(100, 90, 80, "Karry");
+    //score2(100, 90, 80, "Karry");  error!!
     score2("Karry", 100, 90, 80);
     score2("Harry", 100, 90, 80, 10, 5);
 

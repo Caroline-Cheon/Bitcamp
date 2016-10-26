@@ -17,5 +17,5 @@ public class Exam55_0 {
 /*
 argument vs parameter
 argument is value handled when calling method
-argument is value taken when using method
+parameter is taking value when using method
 */

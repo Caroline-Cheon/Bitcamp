@@ -1,7 +1,12 @@
+<<<<<<< HEAD
+=======
+// call by reference      값을 가지고 있는 주소를 넘기는 것이다.
+>>>>>>> b5e200dd9e45ee9f7e698c0c6f9ee74c9208aed4
 package step06;
 
 public class Testing {
   public static void main(String[] args) {
+<<<<<<< HEAD
     int[] arr = new int[20];
 
     initByIndexValue(arr);
@@ -50,6 +55,18 @@ public class Testing {
           arr[i+1] = temp;
         }
       }
+=======
+
+    String s1 = "Belly";
+    String s2 = "Belly";
+    String s3 = "Belly";
+
+    if (s1 == s2) {
+      System.out.println("s1 == s2");
+    }
+    if (s1 == s3) {
+      System.out.println("s1 == s3");
+>>>>>>> b5e200dd9e45ee9f7e698c0c6f9ee74c9208aed4
     }
   }
 
