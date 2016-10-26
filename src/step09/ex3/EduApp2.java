@@ -1,30 +1,37 @@
 package step09.ex3;
 import java.util.Scanner;
 
-public class EduApp {
+public class EduApp2 {
+
+  static TextBook[] textbooks = new TextBook[100];
+  static int length = 0;
+  static Scanner keyScan = new Scanner(System.in);
+
   public static void main(String[] args) {
     System.out.println("비트캠프 관리시스템에 오신 걸 환영합니다.");
-    TextBook[] textbooks = new TextBook[100];
-    int length = 0;
-    Scanner keyScan = new Scanner(System.in);
-
+    loop:
     while(true) {
-      System.out.println("명령하세요, (보기:'add','list','view')");
+      System.out.println("명령하세요, (보기:'add','list','view','quit')");
       System.out.print("명령> ");
-      String command = keyScan.nextLine();
+      String command = keyScan.nextLine().toLowerCase();
 
-      if(command.equals("add")) {addTextBookList(textbooks, length++);}
-      else if(command.equals("list")) {printTextBookList(textbooks, length);}
-      else if(command.equals("view")) {viewTextBookList(textbooks, length);}
+      switch (command) {
+        case "add": doAdd(); break;
+        case "list": doList(); break;
+        case "view": doView(); break;
+        case "quit": System.out.println("굿바이"); break loop;
+        default :
+          System.out.println("지원하지 않는 명령입니다.");
+          break;
+      }
 
-      System.out.print("계속 명령하시겠습니까(Y/N)?");
-      if(!keyScan.nextLine().equals("Y"))
+      System.out.print("계속 명령하시겠습니까(y/n)?");
+      if(!keyScan.nextLine().toLowerCase().equals("y"))
         break;
     }
   }
 
-  static void addTextBookList(TextBook[] textbooks, int length) {
-    Scanner keyScan = new Scanner(System.in);
+  static void doAdd() {
     TextBook textbook = new TextBook();
 
     System.out.print("책이름(ex: java's best practice)? ");
@@ -51,15 +58,15 @@ public class EduApp {
     System.out.print("가격(ex: 30000)? ");
     textbook.price = Integer.parseInt(keyScan.nextLine());
 
-    textbooks[length] = textbook;
+    textbooks[length++] = textbook;
     System.out.println();
   }
 
 
 
-  static void printTextBookList(TextBook[] textbooks, int length) {
+  static void doList() {
     for (int i = 0; i < length; i++) {
-      TextBook textbook = textbooks[i];  // 이줄을 없애고 그냥  아래 식에서 textboos[i].title 이렇게 써도 된다.
+      TextBook textbook = textbooks[i];
       System.out.printf("%s,%s,%s,%s,%s,%s,%d,%d\n",
         textbook.title,
         textbook.author,
@@ -72,26 +79,23 @@ public class EduApp {
       System.out.println();
     }
   }
-  static void viewTextBookList(TextBook[] textbooks, int length) {
+  static void doView() {
     System.out.println("책이름을 입력하세요");
-    Scanner keyScan = new Scanner(System.in);
-    String input = keyScan.nextLine();
+    String input = keyScan.nextLine().toLowerCase();
     for(int i = 0; i <length;  i++) {
-      
-      TextBook textbook = textbooks[i];
-      if(input.equals(textbook.title)) {
 
+      if(textbooks[i].title.toLowerCase().equals(input)) {
         System.out.println("-----------------------------------");
-        System.out.printf("text: %s\n",textbook.title);
-        System.out.printf("author: %s\n",textbook.author);
-        System.out.printf("press: %s\n",textbook.press);
-        System.out.printf("releaseDate: %s\n",textbook.releaseDate);
-        System.out.printf("language: %s\n",textbook.language);
-        System.out.printf("description: %s\n",textbook.description);
-        System.out.printf("page: %d\n",textbook.page);
-        System.out.printf("price: %d\n",textbook.price);
+        System.out.printf("text: %s\n",textbooks[i].title);
+        System.out.printf("author: %s\n",textbooks[i].author);
+        System.out.printf("press: %s\n",textbooks[i].press);
+        System.out.printf("releaseDate: %s\n",textbooks[i].releaseDate);
+        System.out.printf("language: %s\n",textbooks[i].language);
+        System.out.printf("description: %s\n",textbooks[i].description);
+        System.out.printf("page: %d\n",textbooks[i].page);
+        System.out.printf("price: %d\n",textbooks[i].price);
         System.out.println();
-
+        break;
       }
     }
   }
