@@ -90,11 +90,15 @@ public class TextBookController {
 
     for(int i = 0; i < this.length;  i++) {
       if(this.textBooks[i].title.toLowerCase().equals(userTitle)) {
+        System.out.print("진짜 삭제하시겠습니까?(y/n) ");
+        if(!keyScan.nextLine().toLowerCase().equals("y")) {
+          System.out.println("삭제를 취소하였습니다.");
+          return;}
       //배열의 앞 항목의 값을 현재 항목으로 당겨온다.
-      for(int x = i + 1; x < this.length; x++, i++) {
-        this.textBooks[i] = this.textBooks[x];
-      }
-      this.textBooks[--length] = null;
+        for(int x = i + 1; x < this.length; x++, i++) {
+          this.textBooks[i] = this.textBooks[x];
+        }
+        this.textBooks[--length] = null;
 
         System.out.printf("%s 책 정보를 삭제하였습니다.\n", userTitle);
         return;  //함수 실행 종료

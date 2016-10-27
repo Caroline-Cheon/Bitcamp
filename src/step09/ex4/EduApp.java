@@ -7,7 +7,7 @@ public class EduApp {
   public static void main(String[] args) {
     //EduApp에서 사용하는 keyScan을 TextBookController와 공유!
     TextBookController.keyScan = keyScan;
-
+    
     System.out.println("비트캠프 관리시스템에 오신 걸 환영합니다.");
     loop:
     while(true) {

@@ -25,10 +25,6 @@ public class EduApp {
           System.out.println("지원하지 않는 명령입니다.");
           break;
       }
-
-      System.out.print("계속 명령하시겠습니까(y/n)?");
-      if(!keyScan.nextLine().toLowerCase().equals("y"))
-        break;
     }
   }
 }
