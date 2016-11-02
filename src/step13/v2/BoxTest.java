@@ -3,18 +3,20 @@ package step13.v2;
 import java.util.Scanner;
 
 public class BoxTest {
-  static Scanner keyScan = new Scanner(System.in);
-
+  static Scanner keyScan;
   static Box head;
   static Box tail;
-  static int count;
+  static int length;
 
-  public static void main(String[] args) {
-
+  static {
+    keyScan = new Scanner(System.in);
     head = new Box();
     tail = head;
-    count = 0;
+    length = 0;
+  }
+  public static void main(String[] args) {
 
+    loop:
     while(true) {
       System.out.print("명령> ");
       String command = keyScan.nextLine().toLowerCase();
@@ -23,6 +25,8 @@ public class BoxTest {
         case "add": doAdd(); break;
         case "list": doList(); break;
         case "get": doGet(); break;
+        case "delete": doDelete(); break;
+        case "quit": break loop;
         default :
           System.out.println("지원하지 않는 명령입니다.");
           break;
@@ -34,7 +38,7 @@ public class BoxTest {
     tail.value = Integer.parseInt(keyScan.nextLine());
     tail.next = new Box();
     tail = tail.next;
-    count++;
+    length++;
   }
   static void doList() {
     Box cursor = head;
@@ -51,8 +55,9 @@ public class BoxTest {
   static void doGet() {
     System.out.print("인덱스? ");
     int index = Integer.parseInt(keyScan.nextLine());
-    if (index < 0 || index >= count) {
-      throw new RuntimeException("인덱스의 범위를 벗어났습니다.");
+    if (index < 0 || index >= length) {
+      System.out.println("인덱스가 유효하지 않습니다.");
+      return;
     }
     Box cursor = head;
     for(int i = 0; i < index; i++) {
@@ -60,4 +65,51 @@ public class BoxTest {
     }
     System.out.println(cursor);
   }
+  static void doDelete() {
+    System.out.print("삭제할 값의 인덱스? ");
+    int index = Integer.parseInt(keyScan.nextLine());
+    if (index < 0 || index >= length) {
+      System.out.println("인덱스가 유효하지 않습니다.");
+      return;
+    }
+    if (index == 0) {
+      head = head.next;
+      length--;
+      return;
+    }
+    Box cursor = head;
+
+    for(int i = 0; i < (index - 1); i++) {
+      cursor = cursor.next;
+    }
+    cursor.next = cursor.next.next;
+    length--;
+  }
 }
+
+/*
+
+static void doDelete() {
+  System.out.print("삭제할 값의 인덱스? ");
+  int index = Integer.parseInt(keyScan.nextLine());
+  if (index < 0 || index >= length) {
+    System.out.println("인덱스가 유효하지 않습니다.");
+    return;
+  }
+  Box currBox = head;
+  Box prevBox = null;
+
+  for(int i = 0; i < index; i++) {
+    prevBox = currBox;
+    currBox = currBox.next;
+  }
+  if (index == 0) {
+    head = head.next;
+  } else {
+    prevBox.next = currBox.next;
+  }
+  length--;
+}
+
+
+*/
