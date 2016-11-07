@@ -53,12 +53,18 @@ public class Exam91_2{
     System.out.println( map.get(key2));
 
     //다음 코드는 컴파일 오류이다.
-    //=> for (:) 에 들어갈 값은 배열 또는 java.util.Iterable, java.lang.Iterable 이어야 한다.
+    //=> for (:) 에 들어갈 값은 배열 또는  java.lang.Iterable 이어야 한다.
     // for (String value : map) {
     //   System.out.println(value);
     // }
   }
 }
+/*
+680411053, 680411053, true
+홍길동
+홍길동
+*/
+
 
 
 
