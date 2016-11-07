@@ -33,14 +33,14 @@ public class Score {
     this._eng = eng;
     this._math = math;
     this._sum = kor + eng + math;
-    this._average = this.sum / 3.0f;
+    this._average = this._sum / 3.0f;
   }
   private void compute() {
     this._sum = this._kor + this._eng + this._math;
-    this._average = this.sum / 3f;
+    this._average = this._sum / 3f;
   }
   public void setName(String name) {this._name = name;}
-  public void setKor(int _kor) {this._kor = kor; this.compute();}
+  public void setKor(int kor) {this._kor = kor; this.compute();}
   public void setEng(int eng) {this._eng = eng; this.compute();}
   public void setMath(int math) {this._math = math; this.compute();}
 

@@ -5,7 +5,7 @@ public class CustomerTest {
   public static void main(String[] args) {
     Customer customer = new Customer();
     customer.setName("길동이");
-    //customer.setAge(300);  // 값이 유효하지 않기 때문에 실행 오류 발생!
+   // customer.setAge(300);  // 값이 유효하지 않기 때문에 실행 오류 발생!
     customer.setAge(30);
     customer.setGender(false);
 
