@@ -24,16 +24,12 @@
 */
 package step18;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
+import java.io.FileInputStream;
 
 public class Exam99_2 {
-  public static void main(String[] args) throws Exception{
+  public static void main(String[] args) throws Exception {
     FileInputStream in0 = new FileInputStream("temp/Exam95_10.data");
     BufferedInputStream in1 = new BufferedInputStream(in0);
     DataInputStream in = new DataInputStream(in1);
