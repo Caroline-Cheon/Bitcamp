@@ -1,4 +1,4 @@
-package step20;
+package step20.homework;
 
 import java.io.DataOutputStream;
 import java.io.File;
@@ -27,7 +27,6 @@ public class FileClient {
       long fileSize = file.length();
 
       //서버로 보낼 도구 준비
-      //BufferedOutputStream out0 = new BufferedOutputStream();
       DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 
       byte[] bytes = new byte[8192];
@@ -42,7 +41,6 @@ public class FileClient {
         out.write(bytes, 0, len);  //읽은 만큼 보냄
       }
 
-      //다 보냈으면 메시지 출력
       System.out.println("서버에 전송을 완료했습니다.");
 
       out.close();
@@ -50,7 +48,6 @@ public class FileClient {
       socket.close();
       keyScan.close();
     } catch (FileNotFoundException e) { 
-      //파일명이 잘못 입력되었을 경우
       System.out.println("입력하신 파일을 찾지 못했습니다.");
     } catch (Exception e) {
     }

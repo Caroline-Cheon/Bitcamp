@@ -1,60 +1,51 @@
-/* 주제: 네트워킹 프로그래밍 소개 - 미니 웹 서버 만들기
-*/
+/* 주제: 네트워킹 프로그래밍 - 클라이언트 소켓 
+ * => 서버와 연결할 때 사용하는 도구
+ */
 package step20;
 
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.PrintStream;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
 public class Exam105_1 {
   public static void main(String[] args) throws Exception {
-    //클라이언트 요청을 기다리는 랜카드 접속 객체 준비
-    ServerSocket ss = new ServerSocket(8888);
-    System.out.println("자바89 미니 웹서버 시작!");
-    
-    while (true) {
-      try {
-        // 대기열에서 기다리고 있는 클라이언트들 중에서 한 개의 클라이언트 접속을 승인한다.
-        Socket socket = ss.accept();
-        System.out.println("클라이언트와 연결되었습니다.----------------------");
-        InputStream in = socket.getInputStream();
-        OutputStream out = socket.getOutputStream();
-        Scanner in2 = new Scanner(in);
-        PrintStream out2 = new PrintStream(out);
+    try (
+        //소켓 만들기
+        //1) 서버와의 연결을 수행하는 객체 준비
+        // new Socket(서버주소, 포트번호)
+        // 서버주소: 도메인명, IP 주소. 로컬 도메인명 "localhost", 로컬 기본 IP "127.0.0.1"이다.
+        Socket socket = new Socket("127.0.0.1", 8888); 
         
-        // 1) 클라이언트가 보낸 메세지를 읽는다.
-        String line = null;
-        do {
-          line = in2.nextLine();
-          System.out.println(line);
-        } while (line.length() != 0);
+        //2) 데이터를 주고 받기 위한 입출력 스트림 객체 준비
+        Scanner in = new Scanner(socket.getInputStream());
+        PrintStream out = new PrintStream(socket.getOutputStream());
         
-        // 2) 클라이언트에게 응답한다.
-        // HTTP 응답 규칙에 따라 클라이언트에게 데이터를 보낸다.
-        // HTTP 응답 규칙?
-        // 프로토콜/ 버전 상태코드 간단한메세지 CRLF
-        // 헤더명: 값 CRLF
-        // ...
-        // 빈 줄
-        // 응답데이터
-        out2.println("HTTP/1.1 200 OK");
-        out2.println("Server: Java89 Mini web Server");
-        out2.println("Context-Length: 20");
-        out2.println("Context-Type: text/plain;charset=UTF-8");
-        out2.println();
-        out2.println("Hello, World!-IamDev");
+        //사용자로부터 입력 받기 위한 객체 준비
+        Scanner keyScan = new Scanner(System.in);) {
+      
+      System.out.println("서버와 연결되었음");
+      
+      while (true) {
+        //3) 서버로 보낼 데이터를 사용자로부터 입력 받는다.
+        System.out.print("보낼 메시지? ");
+        String message = keyScan.nextLine();
         
-        out2.close();
-        in2.close();
-        out.close();
-        in.close();
-        socket.close();
-      } catch (Exception e) {
-        // 예외 무시? 일단 네트워킹 프로그래밍 테스트
+        //4) 서버에 데이터를 보낸다.
+        out.println(message);
+        if (message.toLowerCase().equals("quit")) {
+          break;
+        }
+        
+        //5) 서버가 보낸 데이터를 읽고 출력한다.
+        String recvMsg = in.nextLine();
+        System.out.println(recvMsg);
+        if (recvMsg.toLowerCase().equals("quit")) {
+          break;
+        }
       }
-    } //while
-  } //main
+     
+    } catch (Exception e) {
+      //e.printStackTrace();
+    }
+  }
 }

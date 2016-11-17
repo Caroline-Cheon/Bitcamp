@@ -1,7 +1,8 @@
-package step20;
+package step20.homework;
 
 import java.io.DataInputStream;
 import java.io.FileOutputStream;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -15,6 +16,7 @@ public class FileServer {
     //파일정보저장변수
     long fileSize = 0;
     String fileName = null;
+    InetAddress clientIp;
     
     while (true) {
       try {
@@ -23,11 +25,12 @@ public class FileServer {
         System.out.println("클라이언트와 연결되었습니다. -----------------------------");
         
         DataInputStream in = new DataInputStream(socket.getInputStream());
-        //PrintStream out = new PrintStream(socket.getOutputStream());
         
         // 파일 정보를 읽어온다.
         fileSize = in.readLong();
         fileName = "downloaded_"+ in.readUTF();
+        clientIp = socket.getInetAddress();
+        System.out.println("Hello  " + clientIp);
         System.out.println("파일 다운로드 시작. 받을 파일이름 : " + fileName);
         
         // 파일 쓰기 도구 준비
