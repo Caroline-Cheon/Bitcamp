@@ -1,4 +1,4 @@
-package step20.quiz;
+package step20.ex4;
 
 import java.io.PrintStream;
 import java.net.ServerSocket;
@@ -41,13 +41,18 @@ public class QuizServer {
               
           Scanner keyScan = new Scanner(System.in);) {
         
-        String messege = "성격 유형으로 알아보는 진로 탐색 테스트";
+        
+        String recvMsg = in.nextLine();
+       
+        
+        
+        String messege = recvMsg + "님 환영합니다. 성격 유형으로 알아보는 진로 탐색 테스트를 시작합니다.";
         out.println(messege);
         
         cursor = stages[0];
         while (true) {
           if ((cursor.yes) == null || (cursor.no) == null) {
-            out.println("결과가 나왔습니다. : [ " + cursor + " ] 타입 ");
+            out.println("결과가 나왔습니다. : [ " + cursor + " ]");
             out.println("quit");
             break;
           }
@@ -55,7 +60,7 @@ public class QuizServer {
           
           loop:
           while (true) {  //입력 값이 유효한지 검사하기
-            String recvMsg = in.nextLine();
+            recvMsg = in.nextLine();
             switch (recvMsg.toLowerCase()) {
             
             case "y":
@@ -99,12 +104,24 @@ public class QuizServer {
     stages[13] = new Stage("신문이나 뉴스를 자주 보는 편이다");
     stages[14] = new Stage("미술관에 가는 것이 좋다");
     stages[15] = new Stage("남의 이야기를 잘 들어주는 편이다");
-    stages[16] = new Stage("a");
-    stages[17] = new Stage("b");
-    stages[18] = new Stage("c");
-    stages[19] = new Stage("d");
-    stages[20] = new Stage("e");
-    stages[21] = new Stage("f");
+    stages[16] = new Stage("A: 직장인 - [기자, 외교관, 펀드 매니저, 재무설계사] "
+        + "(어떤 일에 있어서든 신중하게 조금씩 전진하는 타입으로 당신은 천천히 판단하면서 확실한 길을 찾아갑니다. "
+        + "그 신중함은 주변의 신뢰를 얻는데 큰 도움이 됩니다.");
+    stages[17] = new Stage("B: 창조자 - [작가, 쇼핑호스트, 프로그래머, 광고 기획자]"
+                      + "(자신의 머릿속에서 번뜩이는 아이디어를 매우 간단히 실현할 수 있는 사람입니다. 주변의 의견 등에 "
+                      + "상관없이 자기의 감각을 믿는 사람이기 때문에 여러 분야에 있어서 능력을 발휘할 수 있습니다.)");
+    stages[18] = new Stage("C: 예술가 - [건축가, 디자이너, 지휘자, 무용가]"
+                      + "(자기가 가진 재능을 통해 생각한 것을 실현하는 타입으로 또한 남들과는 다른 재능을 타고난 굉장히 "
+                      + "운이 좋은 사람입니다. 자신이 흥미있는 일에 매달리다보면 반드시 성공할 수 있습니다.)");
+    stages[19] = new Stage("D: 도전자 - [요리사, 고고학자, 스포츠 에이전트, 등산가]"
+                      + "(사소한 것에서도 무엇인가 새로운 것을 발견할 줄 아는 사람입니다. 언제나 꾸준히 노력하며 누구도 "
+                      + "하지 않는 일에 도전하여 언젠가는 세상을 깜짝 놀라게 할만한 일을 이루어 낼 것입니다.)");
+    stages[20] = new Stage("E: 사람을 좋아하는 타입 - [행사 기확자, 사회복지사, 국제기구 종사자, 헤드헌터]"
+                      + "(사람을 사귀는 것을 좋아하고, 매우 성격이 밝은 사람입니다. 다른 사람들을 위해 하는 일이라면 "
+                      + "언제나 즐겁고 기쁜 마음으로 손을 내밉니다.)");
+    stages[21] = new Stage("F: 현장에서 일하는 타입 - [영화감독, 운동선수, 동물조련사, 조경사]"
+                      + "(무언가에 열중하고 있을 때 놀랄만한 파워를 발휘할 수 있는 사람입니다. 기분이 좋고 자신의 생각대로 "
+                      + "일이 이루어질 때 최고의 재능을 발휘할 것입니다.)");
     
     stages[0].setStage(stages[1], stages[2]);
     stages[1].setStage(stages[3], stages[4]);
