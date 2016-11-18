@@ -29,9 +29,9 @@ public class QuizServer {
   public static void main(String[] args) throws Exception {
     
     InitStage();
-    
     ServerSocket serverSocket = new ServerSocket(8888);
     System.out.println("서버 실행 중...");
+    
     while (true) {
       try (
           Socket socket = serverSocket.accept();
@@ -41,14 +41,12 @@ public class QuizServer {
               
           Scanner keyScan = new Scanner(System.in);) {
         
-        
+        // 사용자에게 이름을 입력 받는다.
         String recvMsg = in.nextLine();
-       
-        
-        
         String messege = recvMsg + "님 환영합니다. 성격 유형으로 알아보는 진로 탐색 테스트를 시작합니다.";
         out.println(messege);
-        
+
+        //커서를 첫번째 문제로 지정한다.
         cursor = stages[0];
         while (true) {
           if ((cursor.yes) == null || (cursor.no) == null) {
@@ -72,9 +70,9 @@ public class QuizServer {
             default:
               out.println("다시 선택해주세요(y/n)");
               break;
-            }
+            } // switch
           } //while y/n
-        }
+        } //question while
         socket.close();
         out.close();
         in.close();

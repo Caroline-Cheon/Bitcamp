@@ -22,9 +22,11 @@ public class QuizClient {
       String name = keyScan.nextLine();
       out.println(name);
 
+      // 환영인사를 수신받는다.
       String recvMsg = in.nextLine();
       System.out.println(recvMsg);
       
+      // 테스트 시작
       while (true) {
         recvMsg = in.nextLine();
         System.out.println(recvMsg);
