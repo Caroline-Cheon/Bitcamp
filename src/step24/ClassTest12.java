@@ -21,9 +21,7 @@ public class ClassTest12 {
     
     Class<MyClass> clazz = MyClass.class;
     
-    
     //MyClass obj = clazz.newInstance();
-    
     
     Constructor<MyClass> constructor = clazz.getConstructor(String.class);
     MyClass obj = constructor.newInstance("홍길동");
