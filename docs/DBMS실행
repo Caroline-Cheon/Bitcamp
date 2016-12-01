@@ -44,12 +44,31 @@ password: 암호입력
   tel varchar(20) ,
   email varchar(50) not null);
   
+  create table ex_textbooks (
+  title varchar(20) not null,
+  author varchar(20) not null,
+  press varchar(20) ,
+  releaseDate int ,
+  language varchar(20),
+  description varchar(20),
+  page int,
+  price int);
+  
   
 [테이블의 데이터를 구분하는 식별자(Primary Key; PK)로 사용할 칼럼 지정]
 > ALTER TABLE 테이블명 
   ADD PRIMARY KEY(컬럼명,컬럼명, ...);
 > ALTER TABLE ex_contacts 
   ADD PRIMARY KEY(email);
+  
+> ALTER TABLE ex_textbooks 
+ADD PRIMARY KEY(title);
+
+
+=> PK는 아니지만 중복되어서는 안되는 컬럼인 경우 다음과 같이 유니크 컬럼으로 지정한다.
+  alter table ex_textbooks
+  add unique index (description);
+
 
 [테이블의 삭제]
 > drop table 테이블명;  
@@ -73,7 +92,20 @@ password: 암호입력
   values('dddd@test.com', 'ddd', '111-1114', '부장');
  insert into ex_contacts(email, name, tel, position)
   values('eee@test.com', 'eee', '111-1111', '차장');
-  
+
+> insert into ex_textbooks(title, author, press, releaseDate, language, description, page, price)
+  values('자바의세계','천재','비트사','2016','한국어','좋은 책이다','500','50000');
+  insert into ex_textbooks(title, author, press, releaseDate, language, description, page, price)
+  values('파이썬의세계','히힛','비트사','2016','중국어','간단간단','500','50000');
+  insert into ex_textbooks(title, author, press, releaseDate, language, description, page, price)
+  values('기트를배워보자','아무개','비트사','2016','영어','그냥','500','50000');
+  insert into ex_textbooks(title, author, press, releaseDate, language, description, page, price)
+  values('데이터베이스','데베','비트사','2016','한국어','껌이네','500','50000');
+  insert into ex_textbooks(title, author, press, releaseDate, language, description, page, price)
+  values('웹의세계','바보','비트사','2016','한국어','웹이라고해','500','50000');
+
+
+
 => 만약 이메일 컬럼의 값이 중복된다면 insert를 허락하지 않는다.
   
 [테이블에 데이터 조회] 

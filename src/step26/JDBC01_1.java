@@ -19,7 +19,7 @@ public class JDBC01_1 {
   public static void main(String[] args) throws Exception {
     // 1) java.sql.Driver를 구현한 클래스 객체를
     //    JDBC 드라이버 관리장게 등록해야 한다.
-    DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+    DriverManager.registerDriver(new com.mysql.jdbc.Driver());   // project explorer에서 확인가능하다.
     
     // 2) java.sql.Driver 구현체(com.mysql.jdbc.Driver 객체)에게 DBMS와 연결하라고 요청한다.
     //    그러나 직접 이 객체를 사용하여 DBMS에 연결하지 않는다.
