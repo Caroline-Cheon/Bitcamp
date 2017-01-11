@@ -36,12 +36,6 @@ public class Test01_selectListByCondition {
       map.put("position", inputStr);
     }
     
-    ArrayList<String> namelist = new ArrayList<>();
-    String[] names = inputStr.split(",");
-    for (String name : names) {
-      namelist.add(name);
-    }
-    
     InputStream in = Resources.getResourceAsStream("step29/ex3/mybatis-config.xml");
     SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(in);
     SqlSession sqlSession = sqlSessionFactory.openSession();
