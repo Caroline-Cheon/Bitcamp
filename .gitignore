@@ -1,6 +1,10 @@
 /bin/
 /.classpath/
 /.gradle/
+/.settings/
+/gradle/
+/.project
+/build/ 
 /Hello.js/
 /Exam01.class/
 /HelloWeb.class/
