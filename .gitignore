@@ -1,8 +1,8 @@
 /bin/
-/.classpath/
 /.gradle/
 /.settings/
 /gradle/
+/.classpath/
 /.project
 /build/ 
 /Hello.js/
